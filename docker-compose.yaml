@@ -1,0 +1,12 @@
+services:
+  syslog-demo-nginx:
+    container_name: syslog-demo-nginx
+    image: nginx:latest
+    ports:
+      - '8080:80'
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "tcp://192.168.64.1:5140"
+        tag: "syslog-demo-nginx"
+    restart: always
