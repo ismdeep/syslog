@@ -25,7 +25,7 @@ func StartCompressOldFilesCron() {
 			}
 		}()
 		for i := 2; i < 30; i++ {
-			fileName := fmt.Sprintf("%v.log", time.Now().Add(time.Duration(i*24)*time.Hour).Format("2006-01-02"))
+			fileName := fmt.Sprintf("%v.log", time.Now().Add(time.Duration(-1*i*24)*time.Hour).Format("2006-01-02"))
 			stat, err := os.Stat(fileName)
 			if err == nil && !stat.IsDir() {
 				cmd := exec.Command("xz", "-T", "0", fileName)
